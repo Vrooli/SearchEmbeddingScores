@@ -1,0 +1,16 @@
+version: '3.9'
+services:
+  embeddings-search-test:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+      args:
+        PORT: "${PORT}"
+    container_name: search-embeddings-test
+    environment:
+      PORT: "${PORT}"
+    volumes:
+      - .:/app
+    ports:
+      - "${PORT}:${PORT}"
+    command: python src/app.py
